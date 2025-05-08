@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { AppHeader } from './components/AppHeader/AppHeader';
+import { BurgerConstructor } from './components/BurgerConstructor/BurgerConstructor';
+import { IngredientsList } from './components/IngredientsList/IngredientsList';
+import { Modal } from './components/ModalWindow/Modal';
+import { TIngredients, TIngredientsList } from './types/ingredients';
+
+const portalContainer = document.getElementById('modal-root');
 
 function App() {
+  const [data, setData] = useState<TIngredients[]>([]);
+  const [isLoading, setLoading] = useState(true);
+  const ingridients = 'https://norma.nomoreparties.space/api/ingredients';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(ingridients);
+        const result = await response.json();
+        console.log('Full response:', result);
+        console.log('ressss', result);
+        setData(result.data);
+      } catch (error) {
+        console.log('ERROR');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log('data', data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppHeader />
+      <div className="app_container">
+        <IngredientsList data={data} portalContainer={portalContainer} />
+        <BurgerConstructor data={data} portalContainer={portalContainer} />
+      </div>
     </div>
   );
 }

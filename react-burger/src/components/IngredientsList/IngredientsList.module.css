@@ -1,0 +1,57 @@
+.burger_list {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 912px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 272px;
+  height: 208px;
+}
+
+.ingredient_name {
+  display: flex;
+  justify-content: center;
+  width: 272px;
+  height: 48px;
+}
+
+.img_price {
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 160px;
+  background-color: rgba(19, 19, 22, 1);
+  border: none;
+}
+
+.price {
+  display: flex;
+  height: 24px;
+  margin: 4px 0;
+  color: rgba(242, 242, 243, 1);
+}
+
+.scroll_container {
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.tytle {
+  font-family: 'Jet Brains Mono';
+  text-align: start;
+  font-weight: 700;
+}
+
+.card_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+}
