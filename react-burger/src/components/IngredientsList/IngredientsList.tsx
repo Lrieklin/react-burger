@@ -20,13 +20,6 @@ export const IngredientsList = ({ data, portalContainer }: TBurgerConstructorPro
   const handleOpenPlaceOrderClick = useCallback(
     (id: string | null) => {
       setOpen(true);
-      console.log('id', id);
-      console.log(
-        'data.find',
-        data.find(currentData => currentData._id === id),
-      );
-      console.log('data', data);
-
       const test = data.find(currentData => currentData._id === id) || null;
       test && setData(test);
     },

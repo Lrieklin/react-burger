@@ -8,7 +8,6 @@ type TIngredientDetailsProps = {
 };
 
 export const IngredientDetails = ({ data }: TIngredientDetailsProps) => {
-  console.log('DATA', data);
   return (
     <div className={style.container}>
       <img src={data?.image_large} />

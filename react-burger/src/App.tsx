@@ -18,8 +18,6 @@ function App() {
       try {
         const response = await fetch(ingridients);
         const result = await response.json();
-        console.log('Full response:', result);
-        console.log('ressss', result);
         setData(result.data);
       } catch (error) {
         console.log('ERROR');
@@ -30,8 +28,6 @@ function App() {
 
     fetchData();
   }, []);
-
-  console.log('data', data);
 
   return (
     <div className="App">

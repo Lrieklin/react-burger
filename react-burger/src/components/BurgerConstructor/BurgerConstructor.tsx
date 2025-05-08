@@ -24,7 +24,6 @@ export const BurgerConstructor = ({ data, portalContainer }: TBurgerConstructorP
   const summ = data.map(ingredient => ingredient.price).flat();
 
   const totalSumm = summ.reduce((sum, value) => sum + value, 0);
-  console.log('summ', summ);
 
   return (
     <div className={style.card}>
