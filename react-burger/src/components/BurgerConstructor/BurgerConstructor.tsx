@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Button, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './BurgerConstructor.module.css';
 import { TIngredients, TIngredientsList } from '../../types/ingredients';
@@ -21,9 +21,9 @@ export const BurgerConstructor = ({ data, portalContainer }: TBurgerConstructorP
     setOpen(false);
   }, [isOpen]);
 
-  const summ = data.map(ingredient => ingredient.price).flat();
+  const summ = useMemo(() => data.map(ingredient => ingredient.price).flat(), [data]);
 
-  const totalSumm = summ.reduce((sum, value) => sum + value, 0);
+  const totalSumm = useMemo(() => summ.reduce((sum, value) => sum + value, 0), [summ]);
 
   return (
     <div className={style.card}>

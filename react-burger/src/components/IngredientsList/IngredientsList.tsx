@@ -6,6 +6,7 @@ import { CurrencyIcon, Tab } from '@ya.praktikum/react-developer-burger-ui-compo
 import { TIngredients } from '../../types/ingredients';
 import { Modal } from '../ModalWindow/Modal';
 import { IngredientDetails } from '../IngredientDetails/IngredientDetails';
+import { ingredientTypes, ingredientTypesRus } from '../../constants/IngredientsListConstants';
 
 type TBurgerConstructorProps = {
   data: TIngredients[];
@@ -29,13 +30,6 @@ export const IngredientsList = ({ data, portalContainer }: TBurgerConstructorPro
   const handleClosePlaceOrderClick = useCallback(() => {
     setOpen(false);
   }, [isOpen]);
-
-  const ingredientTypes = ['bun', 'main', 'sauce'];
-  const ingredientTypesRus = [
-    { key: 'bun', value: 'Булки' },
-    { key: 'main', value: 'Начинки' },
-    { key: 'sauce', value: 'Соусы' },
-  ];
 
   const getValueByKey = (title: string) => {
     return ingredientTypesRus.find(type => type.key === title)?.value;
@@ -62,9 +56,9 @@ export const IngredientsList = ({ data, portalContainer }: TBurgerConstructorPro
         ))}
       </div>
       <div className={style.scroll_container}>
-        {IngrAndTitles.map(ingredient => (
-          <>
-            <p className="text text_type_main-medium" style={{ textAlign: 'start' }}>
+        {IngrAndTitles.map((ingredient, index) => (
+          <React.Fragment key={index}>
+            <p className={`${style.title_container} text_type_main-medium`}>
               {getValueByKey(ingredient.title)}
             </p>
             <div className="pt-6 pl-4 pb-10">
@@ -88,7 +82,7 @@ export const IngredientsList = ({ data, portalContainer }: TBurgerConstructorPro
                 ))}
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
       {isOpen && (
