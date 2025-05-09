@@ -1,0 +1,36 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  width: 600px;
+  height: 912px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  background-color: rgba(19, 19, 22, 1);
+}
+
+.scroll_container {
+  overflow: scroll;
+  scroll-behavior: smooth;
+  width: 568px;
+  height: 656px;
+  padding: 100px 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  background-color: rgba(19, 19, 22, 1);
+}
+
+.info_ontainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 536px;
+  height: 80px;
+}
